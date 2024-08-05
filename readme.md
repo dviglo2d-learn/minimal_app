@@ -9,7 +9,7 @@
 ## Сборка в Windows
 
 1. Создайте пустую папку
-2. В ней создайте и запустите батник `1_download_repo.bat` для скачивания исходников шаблона и движка
+2. В ней создайте и запустите батник `1_download_repo.bat` для скачивания исходников шаблона и движка:
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -25,7 +25,7 @@ git clone --recurse-submodules https://github.com/dviglo2d-learn/minimal_app rep
 pause
 ```
 
-3. Создайте и запустите батник `2_cmake_vs.bat` для генерации проектов для Visual Studio
+3. Создайте и запустите батник `2_cmake_vs.bat` для генерации проектов для Visual Studio:
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -41,7 +41,7 @@ cmake.exe repo -B build_vs -G "Visual Studio 17" -A x64
 pause
 ```
 
-4. Создайте и запустите батник `3_build_vs.bat` для компиляции проектов
+4. Создайте и запустите батник `3_build_vs.bat` для компиляции проектов:
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -64,7 +64,7 @@ pause
 
 ## Аналогичные sh-скрипты для Linux
 
-`1_download_repo.sh`
+`1_download_repo.sh`:
 
 ```
 #!/bin/sh
@@ -73,7 +73,7 @@ pause
 git clone https://github.com/dviglo2d-learn/minimal_app repo
 ```
 
-`2_cmake_gcc.sh`
+`2_cmake_gcc.sh`:
 
 ```
 #!/bin/sh
@@ -84,7 +84,7 @@ cmake repo -B build_gcc -G "Unix Makefiles" \
     -D CMAKE_BUILD_TYPE=Debug
 ```
 
-`3_build_gcc.sh`
+`3_build_gcc.sh`:
 
 ```
 #!/bin/sh

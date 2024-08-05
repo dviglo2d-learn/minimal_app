@@ -9,7 +9,7 @@
 ## Сборка в Windows
 
 1. Создайте пустую папку
-2. В ней создайте и запустите батник `1_download_repo.bat` для скачивания исходников шаблона
+2. В ней создайте и запустите батник `1_download_repo.bat` для скачивания исходников шаблона и движка
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -18,34 +18,14 @@ chcp 65001
 :: Путь к git.exe
 set "PATH=c:\program files\git\bin"
 
-:: Качаем репозиторий шаблона в папку repo
-git clone https://github.com/dviglo2d-learn/minimal_app repo
+:: Качаем репозиторий шаблона вместе с движком в папку repo
+git clone --recurse-submodules https://github.com/dviglo2d-learn/minimal_app repo
 
 :: Ждём нажатие Enter перед закрытием консоли
 pause
 ```
 
-3. В этой же папке создайте и запустите батник `2_download_engine.bat` для скачивания исходников движка
-
-```
-:: Меняем кодировку консоли на UTF-8
-chcp 65001
-
-:: Путь к git.exe
-set "PATH=c:\program files\git\bin"
-
-:: Качаем репозиторий движка в папку engine
-git clone https://github.com/dviglo2d/dviglo2d engine
-
-:: Так как в движке могут произойти изменения, ломающие обратную совместимость,
-:: то возвращаем состояние репозитория к определённой версии
-git -C engine reset --hard 47e4fc019cb36e74d9fe455cd201a168dcdcc82b
-
-:: Ждём нажатие Enter перед закрытием консоли
-pause
-```
-
-4. Создайте и запустите батник `3_cmake_vs.bat` для генерации проектов для Visual Studio
+3. Создайте и запустите батник `2_cmake_vs.bat` для генерации проектов для Visual Studio
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -61,7 +41,7 @@ cmake.exe repo -B build_vs -G "Visual Studio 17" -A x64
 pause
 ```
 
-5. Создайте и запустите батник `4_build_vs.bat` для компиляции проектов
+4. Создайте и запустите батник `3_build_vs.bat` для компиляции проектов
 
 ```
 :: Меняем кодировку консоли на UTF-8
@@ -93,20 +73,7 @@ pause
 git clone https://github.com/dviglo2d-learn/minimal_app repo
 ```
 
-`2_download_engine.sh`
-
-```
-#!/bin/sh
-
-# Качаем репозиторий движка в папку engine
-git clone https://github.com/dviglo2d/dviglo2d engine
-
-# Так как в движке могут произойти изменения, ломающие обратную совместимость,
-# то возвращаем состояние репозитория к определённой версии
-git -C engine reset --hard 47e4fc019cb36e74d9fe455cd201a168dcdcc82b
-```
-
-`3_cmake_gcc.sh`
+`2_cmake_gcc.sh`
 
 ```
 #!/bin/sh
@@ -117,7 +84,7 @@ cmake repo -B build_gcc -G "Unix Makefiles" \
     -D CMAKE_BUILD_TYPE=Debug
 ```
 
-`4_build_gcc.sh`
+`3_build_gcc.sh`
 
 ```
 #!/bin/sh
